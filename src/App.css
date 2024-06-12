@@ -1,0 +1,13 @@
+.app {
+  display: flex;
+}
+
+.viewer {
+  margin-left: 200px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9e9e9; /* Hintergrundfarbe des Viewers */
+  height: 80vh;
+}
