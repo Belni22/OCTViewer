@@ -1,4 +1,3 @@
-// Viewer.js
 import React from 'react';
 
 const Viewer = ({ file }) => {
