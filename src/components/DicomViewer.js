@@ -1,10 +1,21 @@
 import React, { useRef, useEffect, useState } from 'react';
 import cornerstone from 'cornerstone-core';
+import cornerstoneMath from 'cornerstone-math';
 import cornerstoneTools from 'cornerstone-tools';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import dicomParser from 'dicom-parser';
-import ZoomTool from './Tools/ZoomTool';
-import BrightnessTool from './Tools/BrightnessTool';
+import Hammer from 'hammerjs';
+import ZoomTool from "./Tools/ZoomTool";
+import BrightnessTool from "./Tools/BrightnessTool";
+import PanTool from "./Tools/PanTool";
+import RotateTool from "./Tools/RotateTool";
+import AnnotationTool from "./Tools/AnnotationTool";
+
+cornerstoneTools.external.cornerstone = cornerstone;
+cornerstoneTools.external.Hammer = Hammer;
+cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
+
+cornerstoneTools.init();
 
 cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
 cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
@@ -74,8 +85,11 @@ const DicomViewer = () => {
             <div style={{ color: 'black', textAlign: 'center', marginTop: '10px' }}>
                 {imageIds.length > 0 && `Bild ${currentIndex + 1} von ${imageIds.length}`}
             </div>
-            <ZoomTool element={divRef.y} />
+            <ZoomTool element={divRef.current} />
             <BrightnessTool element={divRef.current} />
+            <PanTool element={divRef.current} />
+            <RotateTool element={divRef.current} />
+            <AnnotationTool element={divRef.current} />
         </div>
     );
 };

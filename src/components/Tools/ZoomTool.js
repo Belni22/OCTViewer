@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cornerstoneTools from 'cornerstone-tools';
+
+
+
 
 const ZoomTool = ({ element }) => {
     const activateZoom = () => {
-        const ZoomMouseWheelTool = cornerstoneTools.ZoomMouseWheelTool;
-        cornerstoneTools.addTool(ZoomMouseWheelTool);
-        cornerstoneTools.setToolActive('ZoomMouseWheel', { mouseButtonMask: 1 });
+        const ZoomTool = cornerstoneTools.ZoomTool;
+        cornerstoneTools.addTool(ZoomTool);
+        cornerstoneTools.setToolActive('Zoom', { mouseButtonMask: 1 });
     };
+
+    useEffect(() => {
+        if (element) {
+            cornerstoneTools.addTool(cornerstoneTools.ZoomTool);
+            cornerstoneTools.setToolActive('Zoom', { mouseButtonMask: 1 });
+        }
+    }, [element]);
 
     return (
         <button onClick={activateZoom}>Zoom</button>
