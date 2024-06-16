@@ -10,6 +10,7 @@ import BrightnessTool from "./Tools/BrightnessTool";
 import PanTool from "./Tools/PanTool";
 import RotateTool from "./Tools/RotateTool";
 import AnnotationTool from "./Tools/AnnotationTool";
+import ResetTool from "./Tools/ResetTool";
 
 cornerstoneTools.external.cornerstone = cornerstone;
 cornerstoneTools.external.Hammer = Hammer;
@@ -90,6 +91,7 @@ const DicomViewer = () => {
             <PanTool element={divRef.current} />
             <RotateTool element={divRef.current} />
             <AnnotationTool element={divRef.current} />
+            <ResetTool element={divRef.current} />
         </div>
     );
 };
