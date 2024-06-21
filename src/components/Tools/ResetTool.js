@@ -16,7 +16,7 @@ const ResetTool = ({ element }) => {
     };
 
     return (
-        <button onClick={handleReset}>Zurücksetzen</button>
+        <button type={"button"} className={"btn btn-outline-warning mt-2 w-100"} onClick={handleReset}>Zurücksetzen</button>
     );
 };
 

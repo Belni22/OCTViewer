@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import DicomViewer from './components/DicomViewer';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 function App() {
 
