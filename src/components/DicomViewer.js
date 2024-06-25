@@ -11,6 +11,7 @@ import ResetTool from "./Tools/ResetTool";
 import customLoadImage from './Loader/Loader';
 import { registerImage } from './Loader/Loader';
 import MetadataDisplay from './Metadata/MetadataDisplay';
+import PdfViewer from './pdfviewer/PdfViewer';
 
 cornerstoneTools.external.cornerstone = cornerstone;
 cornerstoneTools.external.Hammer = Hammer;
@@ -183,6 +184,9 @@ const DicomViewer = () => {
                 </div>
                 <div className="col">
                     <MetadataDisplay metadata={metadata}/> {/* Pass the metadata to the MetadataDisplay component */}
+                </div>
+                <div className={"col"}>
+                    <PdfViewer />
                 </div>
             </div>
         </div>
