@@ -23,6 +23,8 @@ cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
 cornerstone.registerImageLoader('png', customLoadImage);
 
 
+
+
 function loadImageFromFile(file) {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -69,24 +71,38 @@ const DicomViewer = () => {
                     imageId = `png://${file.name}`;
                     const image = await loadImageFromFile(file);
                     registerImage(imageId, image);
+                    newImageIds.push(imageId);
                 } else if (file.type === 'application/dicom' || file.type === '') {
                     imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(file);
+
                     const arrayBuffer = await file.arrayBuffer();
                     const dataSet = dicomParser.parseDicom(new Uint8Array(arrayBuffer));
                     const meta = extractMetadata(dataSet);
+                    const numberOfFrames = Number(dataSet.string('x00280008'))
+
                     newMetadata.push(meta);
+
+                    if (isNaN(numberOfFrames)) {
+                        newImageIds.push(imageId);
+                    } else {
+                        for (let frameIndex = 0; frameIndex < numberOfFrames; frameIndex++) {
+                            newImageIds.push(imageId + `?frame=${frameIndex}`);
+                        }
+                    }
                 } else {
                     setError('Nur DICOM, jpg oder png erlaubt');
                     return;
                 }
 
-                newImageIds.push(imageId);
+
             }
+            let middle = Math.floor(newImageIds.length / 2);
+
             setImageIds(newImageIds);
-            setCurrentIndex(0);
+            setCurrentIndex(middle);
             setMetadata(newMetadata);
             setError('');
-            loadAndViewImage(newImageIds[0]);
+            loadAndViewImage(newImageIds[middle]);
         }
     };
 
@@ -97,6 +113,8 @@ const DicomViewer = () => {
             patientId: dataSet.string('x00100020'),
             studyDescription: dataSet.string('x00081030'),
             seriesDescription: dataSet.string('x0008103e'),
+            manufacturer: dataSet.string('x00080070'),
+            stationName: dataSet.string('x00081010'),
             modality: dataSet.string('x00080060'),
             studyDate: dataSet.string('x00080020'),
             seriesNumber: dataSet.string('x00200011'),
@@ -156,7 +174,7 @@ const DicomViewer = () => {
                 <div className="col">
                     <div
                         ref={divRef}
-                        style={{width: '512px', height: '512px', backgroundColor: 'black'}}
+                        style={{width: '812px', height: '512px', backgroundColor: 'black'}}
                     ></div>
                     {error && <div style={{color: 'red', textAlign: 'center', marginTop: '10px'}}>{error}</div>}
                     <div style={{color: 'black', textAlign: 'center', marginTop: '10px'}}>

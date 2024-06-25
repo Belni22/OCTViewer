@@ -12,13 +12,15 @@ const MetadataDisplay = ({ metadata }) => {
             }}
         >
             {metadata.length > 0 ? (
-                <table>
+                <table className={"table table-bordered table-hover"}>
                     <thead>
                     <tr>
                         <th>Name des Patienten</th>
                         <th>Patienten ID</th>
                         <th>Studienbeschreibung</th>
                         <th>Serienbeschreibung</th>
+                        <th>Hersteller</th>
+                        <th>Station Name</th>
                         <th>Modalität</th>
                         <th>Datum der Studie</th>
                         <th>Seriennummer</th>
@@ -32,6 +34,8 @@ const MetadataDisplay = ({ metadata }) => {
                             <td>{meta.patientId}</td>
                             <td>{meta.studyDescription}</td>
                             <td>{meta.seriesDescription}</td>
+                            <td>{meta.manufacturer}</td>
+                            <td>{meta.stationName}</td>
                             <td>{meta.modality}</td>
                             <td>{meta.studyDate}</td>
                             <td>{meta.seriesNumber}</td>
