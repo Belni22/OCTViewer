@@ -45,7 +45,6 @@ export default function PdfViewer() {
                 <input type="file" className="form-control" onChange={handleChange} />
                 <button type="submit" className="btn btn-success">View PDF</button>
             </form>
-            <h2>View PDF</h2>
             <div className="pdf-container">
                 <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
                     {viewPDF ? (

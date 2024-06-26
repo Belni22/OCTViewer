@@ -153,40 +153,38 @@ const DicomViewer = () => {
     }, [imageIds, currentIndex]);
 
     return (
-        <div className="container-fluid">
-            <div className="row flex-wrap">
-                <div className="bg-dark col-auto col-md-2 min-vh-100">
-                    <div className="bg-dark p-2">
-                        <h1 className="text-white">OCT Viewer</h1>
-                        <ul className="nav nav-pills flex-column mt-5">
-                            <li className="nav-list"><input className={"w-100"} type="file" multiple onChange={handleFileUpload}/></li>
-                            <li><Tool tool={cornerstoneTools.RotateTool} commandString={'Rotate'} name={"Drehen"}/></li>
-                            <li><Tool tool={cornerstoneTools.WwwcTool} commandString={'Wwwc'} name={"Helligkeit"}/></li>
-                            <li><Tool tool={cornerstoneTools.PanTool} commandString={'Pan'} name={"Verschieben"}/></li>
-                            <li><Tool tool={cornerstoneTools.ZoomTool} commandString={'Zoom'} name={"Zoom"}/></li>
-                            <li><Tool tool={cornerstoneTools.ArrowAnnotateTool} commandString={'ArrowAnnotate'} name={"Kommentar"}/></li>
-                            <li><ResetTool element={divRef.current}/></li>
-                            <li><HelpWindow /></li>
-                        </ul>
+        <div className="d-flex vh-100">
+            <div className="bg-dark p-3 flex-shrink-0">
+                <h1 className={"text-white"}>OCT Viewer</h1>
+                <ul className="nav flex-column mt-3">
+                    <li className="nav-item">
+                        <input className="form-control mb-2" type="file" multiple onChange={handleFileUpload}/>
+                    </li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.RotateTool} commandString="Rotate" name="Drehen"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.WwwcTool} commandString="Wwwc" name="Helligkeit"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.PanTool} commandString="Pan" name="Verschieben"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.ZoomTool} commandString="Zoom" name="Zoom"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.ArrowAnnotateTool} commandString="ArrowAnnotate" name="Kommentar"/></li>
+                    <li className="nav-item"><ResetTool element={divRef.current}/></li>
+                    <li className="nav-item"><HelpWindow/></li>
+                </ul>
+            </div>
+            <div className="flex-grow-1 overflow-auto p-3">
+                <div className="row">
+                    <div className="col-12 col-md-6 mb-3">
+                        <div ref={divRef} className="w-100" style={{height: '512px', backgroundColor: 'black'}}></div>
+                        {error && <div className="text-danger text-center mt-2">{error}</div>}
+                        <div className="text-center mt-2">
+                            {imageIds.length > 0 && `Bild ${currentIndex + 1} von ${imageIds.length}`}
+                        </div>
                     </div>
-                </div>
-
-
-                <div className="col">
-                    <div
-                        ref={divRef}
-                        style={{width: '812px', height: '512px', backgroundColor: 'black'}}
-                    ></div>
-                    {error && <div style={{color: 'red', textAlign: 'center', marginTop: '10px'}}>{error}</div>}
-                    <div style={{color: 'black', textAlign: 'center', marginTop: '10px'}}>
-                        {imageIds.length > 0 && `Bild ${currentIndex + 1} von ${imageIds.length}`}
+                    <div className="col-12 col-md-6 mb-3">
+                        <MetadataDisplay
+                            metadata={metadata}/> {/* Pass the metadata to the MetadataDisplay component */}
                     </div>
-                </div>
-                <div className="col">
-                    <MetadataDisplay metadata={metadata}/> {/* Pass the metadata to the MetadataDisplay component */}
-                </div>
-                <div className={"col"}>
-                    <PdfViewer />
+                    <div className="col-12 col-md-6 mb-3">
+                        <PdfViewer/>
+                    </div>
                 </div>
             </div>
         </div>
