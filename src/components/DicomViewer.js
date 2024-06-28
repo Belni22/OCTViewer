@@ -11,6 +11,8 @@ import ResetTool from "./Tools/ResetTool";
 import customLoadImage from './Loader/Loader';
 import { registerImage } from './Loader/Loader';
 import MetadataDisplay from './Metadata/MetadataDisplay';
+import PdfViewer from './pdfviewer/PdfViewer';
+import Classification from './classification/Classification';
 
 cornerstoneTools.external.cornerstone = cornerstone;
 cornerstoneTools.external.Hammer = Hammer;
@@ -21,6 +23,8 @@ cornerstoneTools.init();
 cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
 cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
 cornerstone.registerImageLoader('png', customLoadImage);
+
+
 
 
 function loadImageFromFile(file) {
@@ -69,24 +73,38 @@ const DicomViewer = () => {
                     imageId = `png://${file.name}`;
                     const image = await loadImageFromFile(file);
                     registerImage(imageId, image);
+                    newImageIds.push(imageId);
                 } else if (file.type === 'application/dicom' || file.type === '') {
                     imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(file);
+
                     const arrayBuffer = await file.arrayBuffer();
                     const dataSet = dicomParser.parseDicom(new Uint8Array(arrayBuffer));
                     const meta = extractMetadata(dataSet);
+                    const numberOfFrames = Number(dataSet.string('x00280008'))
+
                     newMetadata.push(meta);
+
+                    if (isNaN(numberOfFrames)) {
+                        newImageIds.push(imageId);
+                    } else {
+                        for (let frameIndex = 0; frameIndex < numberOfFrames; frameIndex++) {
+                            newImageIds.push(imageId + `?frame=${frameIndex}`);
+                        }
+                    }
                 } else {
                     setError('Nur DICOM, jpg oder png erlaubt');
                     return;
                 }
 
-                newImageIds.push(imageId);
+
             }
+            let middle = Math.floor(newImageIds.length / 2);
+
             setImageIds(newImageIds);
-            setCurrentIndex(0);
+            setCurrentIndex(middle);
             setMetadata(newMetadata);
             setError('');
-            loadAndViewImage(newImageIds[0]);
+            loadAndViewImage(newImageIds[middle]);
         }
     };
 
@@ -97,6 +115,8 @@ const DicomViewer = () => {
             patientId: dataSet.string('x00100020'),
             studyDescription: dataSet.string('x00081030'),
             seriesDescription: dataSet.string('x0008103e'),
+            manufacturer: dataSet.string('x00080070'),
+            stationName: dataSet.string('x00081010'),
             modality: dataSet.string('x00080060'),
             studyDate: dataSet.string('x00080020'),
             seriesNumber: dataSet.string('x00200011'),
@@ -134,37 +154,41 @@ const DicomViewer = () => {
     }, [imageIds, currentIndex]);
 
     return (
-        <div className="container-fluid">
-            <div className="row flex-wrap">
-                <div className="bg-dark col-auto col-md-2 min-vh-100">
-                    <div className="bg-dark p-2">
-                        <h1 className="text-white">OCT Viewer</h1>
-                        <ul className="nav nav-pills flex-column mt-5">
-                            <li className="nav-list"><input className={"w-100"} type="file" multiple onChange={handleFileUpload}/></li>
-                            <li><Tool tool={cornerstoneTools.RotateTool} commandString={'Rotate'} name={"Drehen"}/></li>
-                            <li><Tool tool={cornerstoneTools.WwwcTool} commandString={'Wwwc'} name={"Helligkeit"}/></li>
-                            <li><Tool tool={cornerstoneTools.PanTool} commandString={'Pan'} name={"Verschieben"}/></li>
-                            <li><Tool tool={cornerstoneTools.ZoomTool} commandString={'Zoom'} name={"Zoom"}/></li>
-                            <li><Tool tool={cornerstoneTools.ArrowAnnotateTool} commandString={'ArrowAnnotate'} name={"Kommentar"}/></li>
-                            <li><ResetTool element={divRef.current}/></li>
-                            <li><HelpWindow /></li>
-                        </ul>
+        <div className="d-flex vh-100">
+            <div className="bg-dark p-3 flex-shrink-0">
+                <h1 className={"text-white"}>OCT Viewer</h1>
+                <ul className="nav flex-column mt-3">
+                    <li className="nav-item">
+                        <input className="form-control mb-2" type="file" multiple onChange={handleFileUpload}/>
+                    </li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.RotateTool} commandString="Rotate" name="Drehen"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.WwwcTool} commandString="Wwwc" name="Helligkeit"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.PanTool} commandString="Pan" name="Verschieben"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.ZoomTool} commandString="Zoom" name="Zoom"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.ArrowAnnotateTool} commandString="ArrowAnnotate" name="Kommentar"/></li>
+                    <li className="nav-item"><ResetTool element={divRef.current}/></li>
+                    <li className="nav-item"><HelpWindow/></li>
+                </ul>
+            </div>
+            <div className="flex-grow-1 overflow-auto p-3">
+                <div className="row">
+                    <div className="col-12 col-md-6 mb-3">
+                        <div ref={divRef} className="w-100" style={{height: '512px', backgroundColor: 'black'}}></div>
+                        {error && <div className="text-danger text-center mt-2">{error}</div>}
+                        <div className="text-center mt-2">
+                            {imageIds.length > 0 && `Bild ${currentIndex + 1} von ${imageIds.length}`}
+                        </div>
                     </div>
-                </div>
-
-
-                <div className="col">
-                    <div
-                        ref={divRef}
-                        style={{width: '512px', height: '512px', backgroundColor: 'black'}}
-                    ></div>
-                    {error && <div style={{color: 'red', textAlign: 'center', marginTop: '10px'}}>{error}</div>}
-                    <div style={{color: 'black', textAlign: 'center', marginTop: '10px'}}>
-                        {imageIds.length > 0 && `Bild ${currentIndex + 1} von ${imageIds.length}`}
+                    <div className="col-12 col-md-6 mb-3">
+                        <MetadataDisplay
+                            metadata={metadata}/>
                     </div>
-                </div>
-                <div className="col">
-                    <MetadataDisplay metadata={metadata}/> {/* Pass the metadata to the MetadataDisplay component */}
+                    <div className="col-12 col-md-6 mb-3">
+                        <PdfViewer/>
+                    </div>
+                    <div className="col-12 col-md-6 mb-3">
+                        <Classification/>
+                    </div>
                 </div>
             </div>
         </div>

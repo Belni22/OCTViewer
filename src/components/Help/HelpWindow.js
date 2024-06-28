@@ -9,7 +9,7 @@ const HelpWindow = () => {
         </button>
 
         <div class="modal fade" id="hilfeModal" tabindex="-1" aria-labelledby="hilfeModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="hilfeModalLabel">Informationen zu diesem Tool</h1>
@@ -23,7 +23,7 @@ const HelpWindow = () => {
                         </p>
                         <h5>Werkzeuge</h5>
                         <p>Bilder können über die Fläche Datei hochladen aus dem lokalen Dateisystem hochgeladen werden. <br/>
-                            Um die Bilddateien zu analysieren stehen ihnen folgende Werkzeuge zur Verfügung:
+                            Um die Bilddateien zu analysieren stehen ihnen folgende Werkzeuge zur Verfügung:</p>
                             <ul>
                                 <li>Zoom: Vergrössern und verkleinern der Bilder</li>
                                 <li>Scrollen: Scrollen durch mehrere Bilder mithilfe des Mausrads</li>
@@ -33,7 +33,7 @@ const HelpWindow = () => {
                                 <li>Kommentar: Hinzufügen von Kommentaren auf Bildern</li>
                                 <li>Reset: Löschen der Kommentare auf einem einzelnen Bild</li>
                             </ul>
-                        </p>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schliessen</button>
