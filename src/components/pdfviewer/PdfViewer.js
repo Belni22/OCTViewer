@@ -9,7 +9,7 @@ export default function PdfViewer() {
     const [pdfFile, setPDFFile] = useState(null);
     const [viewPDF, setViewPDF] = useState(null);
 
-    // Initialisieren des defaultLayoutPlugin
+
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
     const fileType = ['application/pdf'];
@@ -41,14 +41,16 @@ export default function PdfViewer() {
 
     return (
         <div className="container">
-            <form onSubmit={handleSubmit}>
-                <input type="file" className="form-control" onChange={handleChange} />
-                <button type="submit" className="btn btn-success">View PDF</button>
-            </form>
+            <div className="d-flex align-items-center mb-3">
+                <input type="file" className="form-control file-input w-50" onChange={handleChange}/>
+                <form onSubmit={handleSubmit} className="ms-2">
+                    <button type="submit" className="btn btn-outline-success">View PDF</button>
+                </form>
+            </div>
             <div className="pdf-container">
                 <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
                     {viewPDF ? (
-                        <Viewer fileUrl={viewPDF} plugins={[defaultLayoutPluginInstance]} />
+                        <Viewer fileUrl={viewPDF} plugins={[defaultLayoutPluginInstance]}/>
                     ) : (
                         <div className="pdf-placeholder">PDF Preview</div>
                     )}

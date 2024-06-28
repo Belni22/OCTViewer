@@ -12,6 +12,7 @@ import customLoadImage from './Loader/Loader';
 import { registerImage } from './Loader/Loader';
 import MetadataDisplay from './Metadata/MetadataDisplay';
 import PdfViewer from './pdfviewer/PdfViewer';
+import Classification from './classification/Classification';
 
 cornerstoneTools.external.cornerstone = cornerstone;
 cornerstoneTools.external.Hammer = Hammer;
@@ -180,10 +181,13 @@ const DicomViewer = () => {
                     </div>
                     <div className="col-12 col-md-6 mb-3">
                         <MetadataDisplay
-                            metadata={metadata}/> {/* Pass the metadata to the MetadataDisplay component */}
+                            metadata={metadata}/>
                     </div>
                     <div className="col-12 col-md-6 mb-3">
                         <PdfViewer/>
+                    </div>
+                    <div className="col-12 col-md-6 mb-3">
+                        <Classification/>
                     </div>
                 </div>
             </div>
