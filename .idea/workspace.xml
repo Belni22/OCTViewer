@@ -4,27 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c624718-43c7-45f1-b509-52508ceac9a0" name="Changes" comment="Updated Readme, add API, other small changes on the code">
-      <change afterPath="$PROJECT_DIR$/.idea/application.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logos/bootstrap-original.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logos/cornerstone-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logos/fastapi-original-wordmark.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logos/react-original.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LNKD.tech Editor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DicomViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DicomViewer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Loader/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Loader/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tools/Tool.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tools/Tool.js" afterDir="false" />
+    <list default="true" id="8c624718-43c7-45f1-b509-52508ceac9a0" name="Changes" comment="changes on the readme">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Help/HelpWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Help/HelpWindow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/classification/Classification.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/classification/Classification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pdfviewer/PdfViewer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pdfviewer/PdfViewer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pdfviewer/PdfViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pdfviewer/PdfViewer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +37,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.start.executor": "Run",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2021.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -84,8 +68,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720081244007</updated>
-      <workItem from="1720081245292" duration="8097000" />
+      <workItem from="1720081245292" duration="14458000" />
     </task>
+    <task id="LOCAL-00001" summary="Updated Readme, add API, other small changes on the code">
+      <option name="closed" value="true" />
+      <created>1720092073381</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1720092073381</updated>
+    </task>
+    <task id="LOCAL-00002" summary="changes on the readme">
+      <option name="closed" value="true" />
+      <created>1720092504033</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1720092504033</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +105,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated Readme, add API, other small changes on the code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Readme, add API, other small changes on the code" />
+    <MESSAGE value="changes on the readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes on the readme" />
   </component>
 </project>

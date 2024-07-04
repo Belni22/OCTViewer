@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Bar} from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import {Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend} from 'chart.js';
 import HelpClassification from "../Help/HelpClassification";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -14,6 +14,18 @@ export default function Classification() {
         let canvas = document.querySelector('.cornerstone-canvas');
         let ctx = canvas.getContext('2d');
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        let empty = true;
+        for (let i = 0; i < imageData.data.length; i++) {
+            if (imageData.data[i] !== 0) {
+                empty = false;
+                break;
+            }
+        }
+        if (empty) {
+            setIsLoading(false)
+            return;
+        }
+
         let body = {
             data: [...imageData.data],
             width: canvas.width,
@@ -91,17 +103,17 @@ export default function Classification() {
 
     return (
         <div>
-        <button className={"btn btn-outline-success"} onClick={click}>Classify</button>
-        <HelpClassification />
-        {isLoading ? (
-            <div className={"spinner-border text-primary"} role={"status"}>
-                <span className={"visually-hidden"}>Loading...</span>
+            <button className={"btn btn-outline-success"} onClick={click}>Classify</button>
+            <HelpClassification/>
+            <div className={"d-flex justify-content-center align-items-center"}>
+                {isLoading ? (
+                    <div className={"spinner-border text-primary "} role={"status"}>
+                        <span className={"visually-hidden"}>Loading...</span>
+                    </div>
+                ) : (
+                    <Bar {...config} />
+                )}
             </div>
-            ) : (
-                <div>
-                <Bar {...config} />
-            </div>
-        )}
-    </div>
+        </div>
     )
 }

@@ -18,8 +18,8 @@ const HelpWindow = () => {
                     <div class="modal-body">
                         <h5>Über dieses Tool</h5>
                         <p>Dieses Tool unterstützt die Funktion folgende Bilddateien hochzuladen: PNG, JPG und DICOM.<br/>
-                            Laden Sie die Bilder über den Button "Datei auswählen" hoch. <br/>
-                            Bei DICOM werden die Metadaten des Bildes ebenfalls angezeigt.
+                            Laden Sie die Bilder über den Button "Datei auswählen" oben links hoch. <br/>
+                            Nur bei DICOM Bildern werden die Metadaten ausgewählt und angezeigt
                         </p>
                         <h5>Werkzeuge</h5>
                         <p>Bilder können über die Fläche Datei hochladen aus dem lokalen Dateisystem hochgeladen werden. <br/>
@@ -33,6 +33,11 @@ const HelpWindow = () => {
                                 <li>Kommentar: Hinzufügen von Kommentaren auf Bildern</li>
                                 <li>Reset: Löschen der Kommentare auf einem einzelnen Bild</li>
                             </ul>
+                        <h5>PDF hochladen</h5>
+                        <p>
+                            PDF Dateien können über den button "Datei auswählen" links unten auf der Mainpage hochgeladen werden.<br/>
+                            Klicken sie auf den Button "View PDF" um das PDF anzeigen zu lassen.
+                        </p>
 
                     </div>
                     <div class="modal-footer">
