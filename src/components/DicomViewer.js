@@ -22,7 +22,8 @@ cornerstoneTools.init();
 
 cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
 cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
-cornerstone.registerImageLoader('png', customLoadImage);
+
+cornerstone.registerImageLoader('rasterImages', customLoadImage);
 
 
 
@@ -70,13 +71,11 @@ const DicomViewer = () => {
                 const file = files[i];
                 let imageId = "";
                 if (file.type === "image/png" || file.type === "image/jpeg") {
-                    imageId = `png://${file.name}`;
                     const image = await loadImageFromFile(file);
-                    registerImage(imageId, image);
+                    imageId = registerImage(image, file.name);
                     newImageIds.push(imageId);
                 } else if (file.type === 'application/dicom' || file.type === '') {
                     imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(file);
-
                     const arrayBuffer = await file.arrayBuffer();
                     const dataSet = dicomParser.parseDicom(new Uint8Array(arrayBuffer));
                     const meta = extractMetadata(dataSet);
@@ -151,7 +150,7 @@ const DicomViewer = () => {
         return () => {
             element.removeEventListener('wheel', handleScroll);
         };
-    }, [imageIds, currentIndex]);
+    });
 
     return (
         <div className="d-flex vh-100">

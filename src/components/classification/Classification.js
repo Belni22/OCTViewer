@@ -30,7 +30,6 @@ export default function Classification() {
         }).then(response => {
             return response.json();
         }).then(data => {
-            console.log(data);
             setResponse(data.prediction);
             setIsLoading(false);
         });

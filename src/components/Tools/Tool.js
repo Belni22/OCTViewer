@@ -6,12 +6,12 @@ const Tool = ({tool, commandString, name}) => {
         cornerstoneTools.addTool(tool);
     }, [tool]);
 
-    const activateRotate = () => {
+    const activateTool = () => {
         cornerstoneTools.setToolActive(commandString, {mouseButtonMask: 1});
     };
 
     return (
-        <button type={"button"} className={"btn btn-outline-success mt-2 w-100"} onClick={activateRotate}>{name}</button>
+        <button type="button" className={"btn btn-outline-success mt-2 w-100"} onClick={activateTool}>{name}</button>
     );
 };
 

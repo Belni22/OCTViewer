@@ -4,9 +4,11 @@ const canvas = document.createElement('canvas');
 let lastImageIdDrawn;
 let images = {}
 
-
-export function registerImage(imageId, image) {
+//Images saved in an object
+export function registerImage(image, fileName) {
+    let imageId = `rasterImages://${fileName}`;
     images[imageId] = image
+    return imageId
 }
 
 function createImageObject(imageId) {

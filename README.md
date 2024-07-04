@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Viewer for OCT images and other multimodal data
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Author
+Nicolas Bellwald
 
-## Available Scripts
+## About this project
 
-In the project directory, you can run:
+This project was created as a bachelor thesis at the Hes-So Valais-Wallis in Sierre. 
+The goal of the project was to create a frontend to display oct images and other multimodal data. 
+The project is using React, Cornerstone.js and FastAPI.
 
-### `npm start`
+The goal of this bachelor thesis was to develop a frontend to display OCT images (PNG, JPG, DICOM) and other multimodal data. The multimodal data includes:
+- PDF display
+- metadata
+- Classification
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Functions of the application
+The application contains the following applications:
+- Upload and display of image data (JPG, PNG and DICOM)
+- Editing images using various tools
+- Extract and display metadata from DICOM files
+- Possibility to display PDF files
+- Classification of images
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Structure of the repository
+The repository contains the frontend and the backend, which is a FastAPI. The FastAPI is responsible for classification.
+The files for the frontend are located in the folder "src" to open the files for the backend, you will find them in the folder "api"
 
-### `npm test`
+## Starting the backend
+To configure and start the backend, please read the following readme. This is a short guide on how to start the backend.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Starting the frontend
+After you have cloned the Github directory, please proceed as follows:
 
-### `npm run build`
+First enter the following command:
+````
+npm install
+````
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then enter the following command to start:
+````
+npm run start
+````
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="public/logos/react-original.svg" alt="React" width="80" height="80">
+<img src="public/logos/bootstrap-original.svg" alt="Bootstrap" width="80" height="80">
+<img src="public/logos/cornerstone-light.png" alt="Cornerstone.js">
+<img src="public/logos/fastapi-original-wordmark.svg" alt="FastAPI" width="100" height="100">
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

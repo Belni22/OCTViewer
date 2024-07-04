@@ -8,6 +8,7 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 export default function PdfViewer() {
     const [pdfFile, setPDFFile] = useState(null);
     const [viewPDF, setViewPDF] = useState(null);
+    const [error, setError] = useState(null);
 
 
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
@@ -21,9 +22,11 @@ export default function PdfViewer() {
                 reader.readAsDataURL(selectedFile);
                 reader.onload = (e) => {
                     setPDFFile(e.target.result);
+                    setError(null);
                 };
             } else {
                 setPDFFile(null);
+                setError('Es werden nur PDF-Dateien akzeptiert');
             }
         } else {
             console.log('Error');
@@ -34,8 +37,10 @@ export default function PdfViewer() {
         e.preventDefault();
         if (pdfFile !== null) {
             setViewPDF(pdfFile);
+            setError(null);
         } else {
             setViewPDF(null);
+            setError('Es werden nur PDF-Dateien akzeptiert')
         }
     };
 
@@ -47,6 +52,7 @@ export default function PdfViewer() {
                     <button type="submit" className="btn btn-outline-success">View PDF</button>
                 </form>
             </div>
+            {error && <div className="error-message">{error}</div>}
             <div className="pdf-container">
                 <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
                     {viewPDF ? (
