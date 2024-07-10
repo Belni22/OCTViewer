@@ -14,31 +14,36 @@ import MetadataDisplay from './Metadata/MetadataDisplay';
 import PdfViewer from './pdfviewer/PdfViewer';
 import Classification from './classification/Classification';
 
+// Initialize cornerstone
 cornerstoneTools.external.cornerstone = cornerstone;
 cornerstoneTools.external.Hammer = Hammer;
 cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
 
+// Initialize the cornerstone tools
 cornerstoneTools.init();
 
+// Initialize the wado image loader that it is possible to upload and edit dicom images
 cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
 cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
 
+// Register the custom image loader for png and jpg
 cornerstone.registerImageLoader('rasterImages', customLoadImage);
 
 
 
-
+// function to convert the uploaded jpg and png files into image objects
 function loadImageFromFile(file) {
+    // Returns a promise which then can be resolved with the image or get rejected and receives an error
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
 
         reader.onload = function (e) {
             const img = new Image();
-
+            // As soon as the image is loaded the promise will be resolved with the image
             img.onload = function () {
                 resolve(img);
             };
-
+            // If the loading of the image fails it will reject the promise and an error message is displayed
             img.onerror = function () {
                 reject(new Error("Bild konnte nicht geladen werden."));
             };
@@ -49,8 +54,8 @@ function loadImageFromFile(file) {
         reader.onerror = function () {
             reject(new Error("Datei konnte nicht gelesen werden."));
         };
-
-        reader.readAsDataURL(file);
+        // Reads the data as a URL which is in base64 format. This is used to load and display the image
+        reader.readAsDataURL(file);//
     });
 }
 
@@ -70,19 +75,24 @@ const DicomViewer = () => {
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
                 let imageId = "";
+                // Checks if it's a png/jpg or a dicom image
                 if (file.type === "image/png" || file.type === "image/jpeg") {
-                    const image = await loadImageFromFile(file);
-                    imageId = registerImage(image, file.name);
+                    const image = await loadImageFromFile(file); // loading the image
+                    imageId = registerImage(image, file.name); //register the image to receive an imageid
                     newImageIds.push(imageId);
                 } else if (file.type === 'application/dicom' || file.type === '') {
                     imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(file);
                     const arrayBuffer = await file.arrayBuffer();
                     const dataSet = dicomParser.parseDicom(new Uint8Array(arrayBuffer));
-                    const meta = extractMetadata(dataSet);
-                    const numberOfFrames = Number(dataSet.string('x00280008'))
+                    const meta = extractMetadata(dataSet); // Extraction of the metadata and store it in an object
+                    const numberOfFrames = Number(dataSet.string('x00280008'))// get the number of frames
 
                     newMetadata.push(meta);
-
+                    /*
+                    * If number of Frames is not a number, then it's a single frame, so it will push only one imageid
+                    * If it has a number of frame value it's a multi frame, so it will go through all the frames and pushes
+                    * an imageid
+                    */
                     if (isNaN(numberOfFrames)) {
                         newImageIds.push(imageId);
                     } else {
@@ -97,6 +107,10 @@ const DicomViewer = () => {
 
 
             }
+            /*
+            * Responsible that it will display the image at the middle position later.
+            * For example is a user uploads a volume
+            */
             let middle = Math.floor(newImageIds.length / 2);
 
             setImageIds(newImageIds);
@@ -107,7 +121,7 @@ const DicomViewer = () => {
         }
     };
 
-
+    // Set the value for the object properties
     const extractMetadata = (dataSet) => {
         return {
             patientName: dataSet.string('x00100010'),
@@ -123,7 +137,11 @@ const DicomViewer = () => {
         };
     };
 
-
+    /*
+    * Is loading the image according to the image id and display
+    * the image in the element which is referred with divRef
+    * (the display for the images)
+    */
     const loadAndViewImage = (imageId) => {
         cornerstone.loadImage(imageId).then((image) => {
             const element = divRef.current;
@@ -134,7 +152,7 @@ const DicomViewer = () => {
 
     const handleScroll = (event) => {
         if (imageIds.length > 1) {
-            const delta = Math.sign(event.deltaY);
+            const delta = Math.sign(event.deltaY); // If scroll up +1 if scroll down -1
             let newIndex = currentIndex + delta;
             if (newIndex >= 0 && newIndex < imageIds.length) {
                 setCurrentIndex(newIndex);
@@ -152,6 +170,7 @@ const DicomViewer = () => {
         };
     });
 
+    // Responsible for the display of the different components, it's designed by using bootstrap
     return (
         <div className="d-flex vh-100">
             <div className="bg-dark p-3 flex-shrink-0">
@@ -161,7 +180,7 @@ const DicomViewer = () => {
                         <input className="form-control mb-2" type="file" multiple onChange={handleFileUpload}/>
                     </li>
                     <li className="nav-item"><Tool tool={cornerstoneTools.RotateTool} commandString="Rotate" name="Drehen"/></li>
-                    <li className="nav-item"><Tool tool={cornerstoneTools.WwwcTool} commandString="Wwwc" name="Helligkeit"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.WwwcTool} commandString="Wwwc" name="Helligkeit/Kontrast"/></li>
                     <li className="nav-item"><Tool tool={cornerstoneTools.PanTool} commandString="Pan" name="Verschieben"/></li>
                     <li className="nav-item"><Tool tool={cornerstoneTools.ZoomTool} commandString="Zoom" name="Zoom"/></li>
                     <li className="nav-item"><Tool tool={cornerstoneTools.ArrowAnnotateTool} commandString="ArrowAnnotate" name="Kommentar"/></li>

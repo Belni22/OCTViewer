@@ -9,6 +9,11 @@ export default function Classification() {
     const [response, setResponse] = useState([0, 0, 0, 0]);
     const [isLoading, setIsLoading] = useState(false);
 
+    /*
+    * Function to get the image data from the canvas
+    * The function checks if the canvas is empty, if not, the image data will be sent
+    * as an object to the FastAPI.
+    */
     const click = () => {
         setIsLoading(true);
         let canvas = document.querySelector('.cornerstone-canvas');
@@ -21,11 +26,13 @@ export default function Classification() {
                 break;
             }
         }
+        // if the canvas is empty terminate the function
         if (empty) {
             setIsLoading(false)
             return;
         }
 
+        // Create an object with the image data and the dimensions of the canvas
         let body = {
             data: [...imageData.data],
             width: canvas.width,
@@ -33,6 +40,7 @@ export default function Classification() {
         };
         let jsonString = JSON.stringify(body);
 
+        // Sending a post request to the FastAPI
         fetch('http://localhost:8000/oct', {
             method: 'POST',
             headers: {
@@ -48,12 +56,13 @@ export default function Classification() {
 
     };
 
+    // Creating the bar chart with the labels and the configuration
     const data = {
         labels: ['CSR', 'DR', 'MH', 'Normal'],
         datasets: [
             {
                 label: '',
-                data: response.map(value => value * 100),
+                data: response.map(value => value * 100), // Converting the results into percentages
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 99, 132, 0.2)',
@@ -111,7 +120,7 @@ export default function Classification() {
                         <span className={"visually-hidden"}>Loading...</span>
                     </div>
                 ) : (
-                    <Bar {...config} />
+                    <Bar {...config} /> // Integrating the bar chart with the configuration
                 )}
             </div>
         </div>
