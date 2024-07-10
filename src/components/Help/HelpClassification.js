@@ -4,20 +4,20 @@ import React from 'react';
 const HelpClassification = () => {
     return <>
 
-        <button type="button" class="btn btn-outline-info ms-2" data-bs-toggle="modal" data-bs-target="#classificationModal">
+        <button type={"button"} className={"btn btn-outline-info ms-2"} data-bs-toggle={"modal"} data-bs-target={"#classificationModal"}>
             <img src={"/icons/info_icon.svg"} alt={"Hilfe Klassifizierung"} width={"20"} height={"20"} />
         </button>
 
-        <div class="modal fade" id="classificationModal" tabindex="-1" aria-labelledby="classificationModal" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="classificationModalLabel">Information über die Klassifizierung</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className={"modal fade"} id={"classificationModal"} aria-labelledby={"classificationModal"} aria-hidden={"true"}>
+            <div className={"modal-dialog modal-lg modal-dialog-centered"}>
+                <div className={"modal-content"}>
+                    <div className={"modal-header"}>
+                        <h1 className={"modal-title fs-5"} id={"classificationModalLabel"}>Information über die Klassifizierung</h1>
+                        <button type={"button"} className={"btn-close"} data-bs-dismiss={"modal"} aria-label={"Close"}></button>
                     </div>
-                    <div class="modal-body">
+                    <div className={"modal-body"}>
                         <p>
-                            Das aktuell angezeigte Bild aus der Anzeige kann mit dem "Classify"
+                            Das aktuell angezeigte Bild aus der Anzeige kann mit dem "classNameify"
                             Button klassifiziert werden.<br/>
                             Die Klassifizierung erfolgt in vier Klassen: CSR, DR, MH und Normal. <br/>
                         </p>
@@ -32,8 +32,8 @@ const HelpClassification = () => {
                             Achtung: Die Klassifizierung dient nur zur Unterstützung und bietet Vorhersagen an.
                         </p>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div className={"modal-footer"}>
+                        <button type={"button"} className={"btn btn-secondary"} data-bs-dismiss={"modal"}>Close</button>
                     </div>
                 </div>
             </div>

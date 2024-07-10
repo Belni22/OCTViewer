@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c624718-43c7-45f1-b509-52508ceac9a0" name="Changes" comment="Error handling for Classification.js and small changes on the HelpWindow.js">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+    <list default="true" id="8c624718-43c7-45f1-b509-52508ceac9a0" name="Changes" comment="Added comments, changed help page, added information on meta display">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DicomViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DicomViewer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Help/HelpClassification.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Help/HelpClassification.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Help/HelpWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Help/HelpWindow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Loader/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Loader/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Metadata/MetadataDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Metadata/MetadataDisplay.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tools/ResetTool.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tools/ResetTool.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tools/Tool.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tools/Tool.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/classification/Classification.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/classification/Classification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pdfviewer/PdfViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pdfviewer/PdfViewer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +75,7 @@
       <workItem from="1720422248632" duration="4118000" />
       <workItem from="1720507396552" duration="11449000" />
       <workItem from="1720554381862" duration="793000" />
+      <workItem from="1720593557257" duration="1615000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Readme, add API, other small changes on the code">
       <option name="closed" value="true" />
@@ -109,7 +101,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720119250691</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added comments, changed help page, added information on meta display">
+      <option name="closed" value="true" />
+      <created>1720595036638</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720595036638</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +130,7 @@
     <MESSAGE value="Updated Readme, add API, other small changes on the code" />
     <MESSAGE value="changes on the readme" />
     <MESSAGE value="Error handling for Classification.js and small changes on the HelpWindow.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error handling for Classification.js and small changes on the HelpWindow.js" />
+    <MESSAGE value="Added comments, changed help page, added information on meta display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added comments, changed help page, added information on meta display" />
   </component>
 </project>

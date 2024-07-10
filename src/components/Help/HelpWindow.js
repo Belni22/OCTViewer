@@ -4,18 +4,18 @@ import React from 'react';
 const HelpWindow = () => {
     return <>
 
-        <button type="button" class="btn btn-outline-info mt-5 w-100" data-bs-toggle="modal" data-bs-target="#hilfeModal">
+        <button type="button" className={"btn btn-outline-info mt-5 w-100"} data-bs-toggle={"modal"} data-bs-target={"#hilfeModal"}>
             <img src={"/icons/info_icon.svg"} alt={"Hilfe"} width={"20"} height={"20"} />
         </button>
 
-        <div class="modal fade" id="hilfeModal" tabindex="-1" aria-labelledby="hilfeModal" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="hilfeModalLabel">Über den OCT Viewer</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className={"modal fade"} id={"hilfeModal"} aria-labelledby={"hilfeModal"} aria-hidden={"true"}>
+            <div className={"modal-dialog modal-xl modal-dialog-centered"}>
+                <div className={"modal-content"}>
+                    <div className={"modal-header"}>
+                        <h1 className={"modal-title fs-5"} id={"hilfeModalLabel"}>Über den OCT Viewer</h1>
+                        <button type={"button"} className={"btn-close"} data-bs-dismiss={"modal"} aria-label={"Close"}></button>
                     </div>
-                    <div class="modal-body">
+                    <div className={"modal-body"}>
                         <h5>Allgemeine Informationen</h5>
                         <p>Dieses Tool wurde erstellt um OCT Aufnahmen und andere multimodale Daten anzuzeigen. <br/>
                             Das Tool beinhaltet die folgenden Funktionen:</p>
@@ -146,8 +146,8 @@ const HelpWindow = () => {
                         </p>
 
                     </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div className={"modal-footer"}>
+                    <button type={"button"} className={"btn btn-secondary"} data-bs-dismiss={"modal"}>Close</button>
                     </div>
                 </div>
             </div>
