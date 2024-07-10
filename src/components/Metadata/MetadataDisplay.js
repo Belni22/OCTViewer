@@ -1,5 +1,11 @@
 import React from 'react';
 
+/*
+* Receives the metadata from the dicom viewer and display it.
+* Please note: only with dicom files it will extract metadata and display it
+* The table is designed with bootstrap, if there is no Metadata for example because of
+* png or jpg files it will show a message "No Metadata available"
+*/
 const MetadataDisplay = ({ metadata }) => {
     return (
         <div
@@ -20,7 +26,7 @@ const MetadataDisplay = ({ metadata }) => {
                         <th>Studienbeschreibung</th>
                         <th>Serienbeschreibung</th>
                         <th>Hersteller</th>
-                        <th>Station Name</th>
+                        <th>Name der Station</th>
                         <th>Modalität</th>
                         <th>Datum der Studie</th>
                         <th>Seriennummer</th>
@@ -45,7 +51,10 @@ const MetadataDisplay = ({ metadata }) => {
                     </tbody>
                 </table>
             ) : (
-                <div>No metadata available</div>
+                <div>
+                    <p>Keine Metadaten verfügbar</p>
+                    <p className={"text-danger"}>Bemerkung: Metadaten werden nur aus DICOM Dateien extrahiert</p>
+                </div>
             )}
         </div>
     );

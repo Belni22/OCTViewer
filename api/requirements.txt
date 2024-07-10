@@ -1,0 +1,5 @@
+numpy~=1.26.4
+fastapi~=0.111.0
+tensorflow~=2.16.1
+pydantic~=2.7.4
+pillow~=10.3.0

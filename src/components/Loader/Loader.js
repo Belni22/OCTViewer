@@ -1,12 +1,15 @@
+// based on the official Cornerstone WebImage Loader
 import cornerstone from 'cornerstone-core';
 
 const canvas = document.createElement('canvas');
 let lastImageIdDrawn;
 let images = {}
 
-
-export function registerImage(imageId, image) {
+// Saving the image in an object and return the image id
+export function registerImage(image, fileName) {
+    let imageId = `rasterImages://${fileName}`;
     images[imageId] = image
+    return imageId
 }
 
 function createImageObject(imageId) {
@@ -60,7 +63,7 @@ function createImageObject(imageId) {
         intercept: 0,
         windowCenter: 128,
         windowWidth: 255,
-        render: cornerstone.renderColorImage,
+        render: cornerstone.renderColorImage, // Worked only with color images
         getPixelData,
         getCanvas,
         getImage: () => image,
@@ -76,9 +79,13 @@ function createImageObject(imageId) {
         sizeInBytes: rows * columns * 4
     };
 }
-
+// Loads the image according to the imageID sends a promise which then can be resolved or be rejected
 export default function loadImage(imageId) {
     const promise = new Promise((resolve, reject) => {
+        /*
+        * Try to create an Image object with the imageID
+        *  If it's successfully created it will resolve the promise with the image
+        */
         try {
             const image = createImageObject(imageId);
             resolve(image);

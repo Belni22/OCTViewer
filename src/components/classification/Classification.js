@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Bar} from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import {Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend} from 'chart.js';
 import HelpClassification from "../Help/HelpClassification";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -9,11 +9,30 @@ export default function Classification() {
     const [response, setResponse] = useState([0, 0, 0, 0]);
     const [isLoading, setIsLoading] = useState(false);
 
+    /*
+    * Function to get the image data from the canvas
+    * The function checks if the canvas is empty, if not, the image data will be sent
+    * as an object to the FastAPI.
+    */
     const click = () => {
         setIsLoading(true);
         let canvas = document.querySelector('.cornerstone-canvas');
         let ctx = canvas.getContext('2d');
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        let empty = true;
+        for (let i = 0; i < imageData.data.length; i++) {
+            if (imageData.data[i] !== 0) {
+                empty = false;
+                break;
+            }
+        }
+        // if the canvas is empty terminate the function
+        if (empty) {
+            setIsLoading(false)
+            return;
+        }
+
+        // Create an object with the image data and the dimensions of the canvas
         let body = {
             data: [...imageData.data],
             width: canvas.width,
@@ -21,6 +40,7 @@ export default function Classification() {
         };
         let jsonString = JSON.stringify(body);
 
+        // Sending a post request to the FastAPI
         fetch('http://localhost:8000/oct', {
             method: 'POST',
             headers: {
@@ -30,19 +50,19 @@ export default function Classification() {
         }).then(response => {
             return response.json();
         }).then(data => {
-            console.log(data);
             setResponse(data.prediction);
             setIsLoading(false);
         });
 
     };
 
+    // Creating the bar chart with the labels and the configuration
     const data = {
         labels: ['CSR', 'DR', 'MH', 'Normal'],
         datasets: [
             {
                 label: '',
-                data: response.map(value => value * 100),
+                data: response.map(value => value * 100), // Converting the results into percentages
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 99, 132, 0.2)',
@@ -92,17 +112,17 @@ export default function Classification() {
 
     return (
         <div>
-        <button className={"btn btn-outline-success"} onClick={click}>Classify</button>
-        <HelpClassification />
-        {isLoading ? (
-            <div className={"spinner-border text-primary"} role={"status"}>
-                <span className={"visually-hidden"}>Loading...</span>
+            <button className={"btn btn-outline-success"} onClick={click}>Classify</button>
+            <HelpClassification/>
+            <div className={"d-flex justify-content-center align-items-center"}>
+                {isLoading ? (
+                    <div className={"spinner-border text-primary "} role={"status"}>
+                        <span className={"visually-hidden"}>Loading...</span>
+                    </div>
+                ) : (
+                    <Bar {...config} /> // Integrating the bar chart with the configuration
+                )}
             </div>
-            ) : (
-                <div>
-                <Bar {...config} />
-            </div>
-        )}
-    </div>
+        </div>
     )
 }
