@@ -1,0 +1,118 @@
+{
+  "turn": "Drehen",
+  "brightnessContrast": "Helligkeit/Kontrast",
+  "move": "Verschieben",
+  "zoom": "Zoomen",
+  "comment": "Kommentar",
+  "resetComment": "Kommentar zurücksetzen",
+  "scroll": "Scrollen",
+
+  "error_message_Images": "Nur DICOM, JPG und PNG erlaubt",
+  "error_message_PDF": "Nur PDF-Dateien erlaubt",
+
+  "viewPDF": "PDF anzeigen",
+
+  "classify": "Klassifizieren",
+  "barChart": "Wahrscheinlichkeit (%)",
+  "metadataNote": "Die Metadaten werden nur aus DICOM-Dateien extrahiert",
+  "metadataError": "Keine Metadaten verfügbar",
+  "patient_name": "Patientenname",
+  "patient_id": "Patienten-ID",
+  "study_description": "Studienbeschreibung",
+  "series_description": "Serienbeschreibung",
+  "manufacturer": "Hersteller",
+  "station_name": "Stationsname",
+  "modality": "Modalität",
+  "study_date": "Studiendatum",
+  "series_number": "Seriennummer",
+  "instance_number": "Instanznummer",
+
+  "modal_classification_title": "Informationen zur Klassifikation",
+  "button_close_aria_label": "Schließen",
+  "modal_classification_body": {
+    "intro_text": "Das aktuell angezeigte Bild kann mit der Schaltfläche 'Klassifizieren' klassifiziert werden. Die Klassifikation beinhaltet die 4 folgenden Kategorien:",
+    "classification_classes": {
+      "csr": "CSR: Zentrale seröse Retinopathie",
+      "dr": "DR: Diabetische Retinopathie",
+      "mh": "MH: Makulaloch",
+      "normal": "Normal: Keine sichtbaren Krankheiten"
+    },
+    "classification_results": "Die Klassifikationsergebnisse werden in einem Balkendiagramm angezeigt.",
+    "warning_text": "Warnung: Die Klassifikation dient nur zu Unterstützungszwecken und liefert Vorhersagen."
+  },
+  "close_button_text": "Schließen",
+
+  "modal_general_title": "Über den OCT Viewer",
+
+  "modal_general_body": {
+    "general_info_title": "Allgemeine Informationen",
+    "general_info_text": "Dieses Tool wurde erstellt, um OCT-Bilder und andere multimodale Daten anzuzeigen. Das Tool umfasst folgende Funktionen:",
+    "general_info_OCT": "Anzeige von OCT-Bildern",
+    "general_info_Metadata": "Anzeige von Metadaten",
+    "general_info_Reports": "Anzeige von Textberichten (PDF)",
+    "general_info_Classification": "Klassifikation",
+
+    "upload_instruction_title": "Hochladen und Anzeigen von Bildern",
+    "upload_instruction_introduction": "Die folgenden Bildformate werden unterstützt",
+    "supported_image_formats1": "JPG",
+    "supported_image_formats2": "PNG",
+    "supported_image_formats3": "DICOM",
+    "upload_subtitle": "Hochladen",
+    "display_subtitle": "Anzeigen",
+    "upload_instruction_text": "Um Bilder hochzuladen, verwenden Sie die Schaltfläche 'Datei auswählen' oben links in der Seitenleiste.",
+    "display_instruction_text": "Die Datei wird direkt nach dem Hochladen angezeigt.",
+
+    "metadata_display_title": "Anzeige von Metadaten",
+    "metadata_display_warning": "Wichtig: Metadaten werden nur aus DICOM-Dateien extrahiert und angezeigt.",
+    "metadata_display_note": "Die Metadaten werden automatisch extrahiert. Wenn der Benutzer eine PNG- oder JPG-Datei hochlädt, wird die folgende Fehlermeldung angezeigt:",
+    "metadata_display_error": "'Keine Metadaten verfügbar'",
+    "metadata_display_introduction": "Die folgenden Metadaten werden angezeigt:",
+
+    "tools_title": "Werkzeuge",
+    "tools_table_header1": "Werkzeug",
+    "tools_table_header2": "Beschreibung",
+    "tools_table_header3": "Steuerung",
+    "tools_description": "Mehrere Werkzeuge stehen zur Bildanalyse zur Verfügung. Die folgende Tabelle bietet detaillierte Erklärungen:",
+    "tools_table": {
+      "tool_rotate": {
+        "tool_description": "Ermöglicht das Drehen des Bildes im Uhrzeigersinn oder gegen den Uhrzeigersinn.",
+        "tool_operation": "Klicken und mit der linken Maustaste ziehen"
+      },
+      "tool_brightness_contrast": {
+        "tool_description": "Ermöglicht die Anpassung von Helligkeit und Kontrast des OCT-Bildes.",
+        "tool_special_operation": "* Beinhaltet spezielle Bedienung",
+        "tool_special_operation_text1": "Helligkeit: Drücken und mit der linken Maustaste nach oben und unten ziehen.",
+        "tool_special_operation_text2": "Kontrast: Drücken und mit der linken Maustaste nach links oder rechts ziehen.",
+        "tool_operation": "Linksklick und ziehen *"
+      },
+      "tool_pan": {
+        "tool_description": "Ermöglicht das Verschieben des Bildes. Nützlich zum Navigieren zu einem bestimmten Punkt in einem vergrößerten Bild.",
+        "tool_operation": "Klicken und mit der linken Maustaste ziehen"
+      },
+      "tool_zoom": {
+        "tool_description": "Ermöglicht das Zoomen in das Bild für eine detaillierte Analyse.",
+        "tool_operation": "Klicken und mit der linken Maustaste nach oben/unten ziehen"
+      },
+      "tool_arrow_annotate": {
+        "tool_description": "Ermöglicht das Markieren wichtiger Punkte oder Befunde mit mehreren Anmerkungen pro Bild.",
+        "tool_operation": "Linksklick + Tastatur"
+      },
+      "tool_reset_annotations": {
+        "tool_description": "Löscht erstellte Anmerkungen auf dem aktuell angezeigten Bild.",
+        "tool_operation": "Einfacher Klick auf die Schaltfläche"
+      },
+      "tool_scroll": {
+        "tool_description": "Ermöglicht die Navigation zwischen verschiedenen Bildern.",
+        "tool_operation": "Mausrad"
+      }
+    },
+    "upload_display_pdf_title": "PDF-Dateien hochladen und anzeigen",
+    "pdf_upload_title": "Hochladen",
+    "pdf_upload_text": "PDF-Dateien werden unten links auf der Hauptseite angezeigt. Um die PDF-Datei hochzuladen, wählen Sie die PDF-Datei mit der Schaltfläche 'Datei auswählen' unten links auf der Hauptseite.",
+    "pdf_display_title": "Anzeigen",
+    "pdf_display_text": "Um die Datei anzuzeigen, klicken Sie auf die Schaltfläche 'PDF anzeigen'.",
+    "classification_title": "Klassifikation",
+    "classification_text": "Das aktuell angezeigte Bild kann klassifiziert werden. Beachten Sie, dass mehrere Bilder nicht gleichzeitig klassifiziert werden können.",
+    "classification_additional_info": "Weitere Informationen finden Sie auf der Klassifikations-Hilfeseite, die sich über dem Balkendiagramm befindet (i-Symbol)."
+  }
+}

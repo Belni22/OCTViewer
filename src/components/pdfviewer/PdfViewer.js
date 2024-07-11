@@ -5,6 +5,7 @@ import { Viewer, Worker } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
+import {useTranslation} from "react-i18next";
 
 export default function PdfViewer() {
     /*
@@ -14,6 +15,7 @@ export default function PdfViewer() {
     const [pdfFile, setPDFFile] = useState(null);
     const [viewPDF, setViewPDF] = useState(null);
     const [error, setError] = useState(null);
+    const {t} = useTranslation(); // For the translation
 
     // Initializing the default layout for the pdf viewer
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
@@ -46,7 +48,7 @@ export default function PdfViewer() {
             setError(null);
         } else {
             setViewPDF(null); // if no pdf was uploaded and the user clicks on the button it will display an error
-            setError('Es werden nur PDF-Dateien akzeptiert')
+            setError(t("error_message_PDF"))
         }
     };
 
@@ -55,7 +57,7 @@ export default function PdfViewer() {
             <div className="d-flex align-items-center mb-3">
                 <input type="file" className="form-control file-input w-50" onChange={handleChange}/>
                 <form onSubmit={handleSubmit} className="ms-2">
-                    <button type="submit" className="btn btn-outline-success">View PDF</button>
+                    <button type="submit" className="btn btn-outline-success">{t("viewPDF")}</button>
                 </form>
             </div>
             {error && <div className="error-message">{error}</div>}

@@ -2,12 +2,14 @@ import {useState} from "react";
 import {Bar} from "react-chartjs-2";
 import {Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend} from 'chart.js';
 import HelpClassification from "../Help/HelpClassification";
+import {useTranslation} from "react-i18next";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function Classification() {
     const [response, setResponse] = useState([0, 0, 0, 0]);
     const [isLoading, setIsLoading] = useState(false);
+    const {t} = useTranslation(); // For the translation
 
     /*
     * Function to get the image data from the canvas
@@ -98,7 +100,7 @@ export default function Classification() {
                 },
                 title: {
                     display: true,
-                    text: 'Wahrscheinlichkeit der Klassen in Prozent',
+                    text: t("barChart"),
                 },
             },
             scales: {
@@ -112,7 +114,7 @@ export default function Classification() {
 
     return (
         <div>
-            <button className={"btn btn-outline-success"} onClick={click}>Classify</button>
+            <button className={"btn btn-outline-success"} onClick={click}>{t("classify")}</button>
             <HelpClassification/>
             <div className={"d-flex justify-content-center align-items-center"}>
                 {isLoading ? (

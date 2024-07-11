@@ -1,0 +1,118 @@
+{
+  "turn": "Rotate",
+  "brightnessContrast": "Brightness/Contrast",
+  "move": "Move",
+  "zoom": "Zoom",
+  "comment": "Comment",
+  "resetComment": "Reset comment",
+  "scroll": "Scroll",
+
+  "error_message_Images": "Only DICOM, JPG and PNG allowed",
+  "error_message_PDF": "Only PDF files allowed",
+
+  "viewPDF": "View PDF",
+
+  "classify": "Classify",
+  "barChart": "Probability (%)",
+  "metadataNote": "The metadata is only extracted from DICOM files",
+  "metadataError": "No metadata available",
+  "patient_name": "Patient Name",
+  "patient_id": "Patient ID",
+  "study_description": "Study Description",
+  "series_description": "Series Description",
+  "manufacturer": "Manufacturer",
+  "station_name": "Station Name",
+  "modality": "Modality",
+  "study_date": "Study Date",
+  "series_number": "Series Number",
+  "instance_number": "Instance Number",
+
+  "modal_classification_title": "Information about Classification",
+  "button_close_aria_label": "Close",
+  "modal_classification_body": {
+    "intro_text": "The currently displayed image can be classified using the 'Classify' button. The classification includes the following 4 categories:",
+    "classification_classes": {
+      "csr": "CSR: Central Serous Retinopathy",
+      "dr": "DR: Diabetic Retinopathy",
+      "mh": "MH: Macular Hole",
+      "normal": "Normal: No visible diseases"
+    },
+    "classification_results": "The classification results will be displayed in a bar chart.",
+    "warning_text": "Warning: Classification is for support purposes only and provides predictions."
+  },
+  "close_button_text": "Close",
+
+  "modal_general_title": "About the OCT Viewer",
+
+  "modal_general_body": {
+    "general_info_title": "General Information",
+    "general_info_text": "This tool was created to display OCT images and other multimodal data. The tool includes the following features:",
+    "general_info_OCT": "Display OCT images",
+    "general_info_Metadata": "Display metadata",
+    "general_info_Reports": "Display text reports (PDF)",
+    "general_info_Classification": "Classification",
+
+    "upload_instruction_title": "Upload and display images",
+    "upload_instruction_introduction": "The following image formats are supported",
+    "supported_image_formats1": "JPG",
+    "supported_image_formats2": "PNG",
+    "supported_image_formats3": "DICOM",
+    "upload_subtitle": "Upload",
+    "display_subtitle": "Display",
+    "upload_instruction_text": "To upload images, use the 'Select File' button located in the top left corner of the sidebar.",
+    "display_instruction_text": "The file will  be displayed directly after the user uploaded a file.",
+
+    "metadata_display_title": "Display of Metadata",
+    "metadata_display_warning": "Important: Metadata is extracted and displayed only from DICOM files.",
+    "metadata_display_note": "The metadata are extracted automatically, if the user uploads a PNG or JPG file the following error message will be displayed:",
+    "metadata_display_error":  ",'No metadata available' ",
+    "metadata_display_introduction": "The following metadata are displayed: ",
+
+    "tools_title": "Tools",
+    "tools_table_header1": "Tool",
+    "tools_table_header2": "Description",
+    "tools_table_header3": "Controls",
+    "tools_description": "Several tools are available for image analysis. The following table provides detailed explanations:",
+    "tools_table": {
+      "tool_rotate": {
+        "tool_description": "Allows rotation of the image clockwise or counterclockwise.",
+        "tool_operation": "Click and drag with the left mouse button"
+      },
+      "tool_brightness_contrast": {
+        "tool_description": "Allows adjustment of brightness and contrast of the OCT image.",
+        "tool_special_operation": "* Includes special operation",
+        "tool_special_operation_text1": "Brightness: Press and drag left mouse button up and down.",
+        "tool_special_operation_text2": "Contrast: Press and drag left mouse button left or right.",
+        "tool_operation": "Left-click and drag *"
+      },
+      "tool_pan": {
+        "tool_description": "Allows panning of the image. Useful for navigating to the correct point in an enlarged image.",
+        "tool_operation": "Click and drag with the left mouse button"
+      },
+      "tool_zoom": {
+        "tool_description": "Allows zooming into the image for detailed analysis.",
+        "tool_operation": "Click and drag up/down with the left mouse button"
+      },
+      "tool_arrow_annotate": {
+        "tool_description": "Allows marking important points or findings with multiple annotations per image.",
+        "tool_operation": "Left-click + Keyboard"
+      },
+      "tool_reset_annotations": {
+        "tool_description": "Deletes created annotations on the currently displayed image.",
+        "tool_operation": "Single click on the button"
+      },
+      "tool_scroll": {
+        "tool_description": "Allows navigation between different images.",
+        "tool_operation": "Mouse wheel"
+      }
+    },
+    "upload_display_pdf_title": "Upload and Display PDF Files",
+    "pdf_upload_title": "Upload",
+    "pdf_upload_text": "PDF files are displayed on the main page in the bottom left corner. To upload the PDF file, select the PDF file using the 'Select File' button located in the bottom left corner of the main page.",
+    "pdf_display_title": "Display",
+    "pdf_display_text": "To display the file, click on the 'View PDF' button.",
+    "classification_title": "Classification",
+    "classification_text": "The currently displayed image can be classified. Note that multiple images cannot be classified at the same time.",
+    "classification_additional_info": " Additional information can be obtained from the classification help page, located above the bar chart (i-symbol)."
+  }
+}
