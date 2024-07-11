@@ -1,8 +1,12 @@
 import React from 'react';
 import cornerstone from 'cornerstone-core';
 import cornerstoneTools from 'cornerstone-tools';
+import {useTranslation} from "react-i18next";
+
+
 
 const ResetTool = ({ element }) => {
+    const {t} = useTranslation(); // For the translation
     const handleReset = () => {
         if (!element) return;
 
@@ -19,7 +23,7 @@ const ResetTool = ({ element }) => {
     };
 
     return (
-        <button type={"button"} className={"btn btn-outline-warning mt-2 w-100"} onClick={handleReset}>Kommentare zurücksetzen</button>
+        <button type={"button"} className={"btn btn-outline-warning mt-2 w-100"} onClick={handleReset}>{t("resetComment")}</button>
     );
 };
 

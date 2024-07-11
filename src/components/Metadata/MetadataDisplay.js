@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from "react-i18next";
 
 /*
 * Receives the metadata from the dicom viewer and display it.
@@ -7,6 +8,7 @@ import React from 'react';
 * png or jpg files it will show a message "No Metadata available"
 */
 const MetadataDisplay = ({ metadata }) => {
+    const {t} = useTranslation(); // For the translation
     return (
         <div
             style={{
@@ -21,16 +23,16 @@ const MetadataDisplay = ({ metadata }) => {
                 <table className={"table table-bordered table-hover"}>
                     <thead>
                     <tr>
-                        <th>Name des Patienten</th>
-                        <th>Patienten ID</th>
-                        <th>Studienbeschreibung</th>
-                        <th>Serienbeschreibung</th>
-                        <th>Hersteller</th>
-                        <th>Name der Station</th>
-                        <th>Modalität</th>
-                        <th>Datum der Studie</th>
-                        <th>Seriennummer</th>
-                        <th>Instanznummer</th>
+                        <th>{t('patient_name')}</th>
+                        <th>{t('patient_id')}</th>
+                        <th>{t('study_description')}</th>
+                        <th>{t('series_description')}</th>
+                        <th>{t('manufacturer')}</th>
+                        <th>{t('station_name')}</th>
+                        <th>{t('modality')}</th>
+                        <th>{t('study_date')}</th>
+                        <th>{t('series_number')}</th>
+                        <th>{t('instance_number')}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -52,8 +54,8 @@ const MetadataDisplay = ({ metadata }) => {
                 </table>
             ) : (
                 <div>
-                    <p>Keine Metadaten verfügbar</p>
-                    <p className={"text-danger"}>Bemerkung: Metadaten werden nur aus DICOM Dateien extrahiert</p>
+                    <p>{t("metadataError")}</p>
+                    <p className={"text-danger"}>{t("metadataNote")}</p>
                 </div>
             )}
         </div>

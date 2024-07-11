@@ -13,6 +13,8 @@ import { registerImage } from './Loader/Loader';
 import MetadataDisplay from './Metadata/MetadataDisplay';
 import PdfViewer from './pdfviewer/PdfViewer';
 import Classification from './classification/Classification';
+import {useTranslation} from "react-i18next";
+import LanguageSelector from "./languageSelector/Language-selector";
 
 // Initialize cornerstone
 cornerstoneTools.external.cornerstone = cornerstone;
@@ -59,8 +61,10 @@ function loadImageFromFile(file) {
     });
 }
 
+
 const DicomViewer = () => {
     const divRef = useRef(null);
+    const {t} = useTranslation(); // For the translation
     const [imageIds, setImageIds] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [error, setError] = useState('');
@@ -101,7 +105,7 @@ const DicomViewer = () => {
                         }
                     }
                 } else {
-                    setError('Nur DICOM, jpg oder png erlaubt');
+                    setError(t("error_message_Images"));
                     return;
                 }
 
@@ -161,6 +165,8 @@ const DicomViewer = () => {
         }
     };
 
+
+
     useEffect(() => {
         const element = divRef.current;
         cornerstone.enable(element);
@@ -179,14 +185,15 @@ const DicomViewer = () => {
                     <li className="nav-item">
                         <input className="form-control mb-2" type="file" multiple onChange={handleFileUpload}/>
                     </li>
-                    <li className="nav-item"><Tool tool={cornerstoneTools.RotateTool} commandString="Rotate" name="Drehen"/></li>
-                    <li className="nav-item"><Tool tool={cornerstoneTools.WwwcTool} commandString="Wwwc" name="Helligkeit/Kontrast"/></li>
-                    <li className="nav-item"><Tool tool={cornerstoneTools.PanTool} commandString="Pan" name="Verschieben"/></li>
-                    <li className="nav-item"><Tool tool={cornerstoneTools.ZoomTool} commandString="Zoom" name="Zoom"/></li>
-                    <li className="nav-item"><Tool tool={cornerstoneTools.ArrowAnnotateTool} commandString="ArrowAnnotate" name="Kommentar"/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.RotateTool} commandString="Rotate" name={t('turn')}/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.WwwcTool} commandString="Wwwc" name={t("brightnessContrast")}/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.PanTool} commandString="Pan" name={t("move")}/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.ZoomTool} commandString="Zoom" name={t("zoom")}/></li>
+                    <li className="nav-item"><Tool tool={cornerstoneTools.ArrowAnnotateTool} commandString="ArrowAnnotate" name={t("comment")}/></li>
                     <li className="nav-item"><ResetTool element={divRef.current}/></li>
                     <li className="nav-item"><HelpWindow/></li>
                 </ul>
+                <LanguageSelector/>
             </div>
             <div className="flex-grow-1 overflow-auto p-3">
                 <div className="row">
