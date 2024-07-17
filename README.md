@@ -25,7 +25,6 @@ The repository contains the frontend and the backend, which is a FastAPI. The Fa
 The files for the frontend are located in the folder "src" to open the files for the backend, you will find them in the folder "api".
 
 ## Starting the backend
-After you have cloned the Github directory, please proceed as follows:
 To configure and start the backend, please read the following [readme](api/README.md) This is a short guide on how to start the backend.
 
 ## Starting the frontend
