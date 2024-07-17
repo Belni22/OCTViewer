@@ -6,14 +6,14 @@ http://localhost:8000
 ## Prerequisites
 
 - Python installed
-- Github directory cloned
+- GitHub directory cloned
 
 
 ## Information
 This guide was created with **Python version 3.12.4**, it is not guaranteed that program will work with other versions.
 
 ## Model
-Since the model used is not in the Github directory, make sure that you load your own model into the project and change the following line in the file **main.py** 
+Since the model used is not in the GitHub directory, make sure that you load your own model into the project and change the following line in the file **main.py** 
 so that your model is loaded.
 ````ps1
 model = load_model('yourmodel.h5')
@@ -21,7 +21,7 @@ model = load_model('yourmodel.h5')
 If you need the model from the project, please contact the author.
 
 ## Configuration
-Make sure that you are in the correct directory: ..\application\api
+Make sure that you are in the correct directory: **..\api**
 
 Enter the following command to create the virtual environment (venv)
 ````ps1
